@@ -10,22 +10,23 @@
       <h1 class="clock-name">{{ title }}</h1>
       <h2 class="clock-location">{{ location }}</h2>
     </div>
-    <div class="clock" ng-controller="clock-controller">
-      <table>
-        <tr>
-          <td class="hour">{{ time | date : "hh" }}</td>
-          <td class="colon">:</td>
-          <td class="minutes">{{ time | date : "mm" }}</td>
-          <td class="seconds">{{ time | date : "ss" }}</td>
-          <td class="ampm">{{ time | date : "a" }}</td>
-        </tr>
-      </table>
-    </div>
-    <div class="edit">
-      <button name="time1">30 minutes</button>
-      <button name="time2">1 hour</button>
-      <button name="time3">1 hour 30 minutes</button>
-      <button name="time4">2 hours</button>
+    <div ng-controller="clock-controller">
+      <div class="clock">
+        <table>
+          <tr>
+            <td class="hour">{{ time | date : "hh" }}</td>
+            <td class="colon">:</td>
+            <td class="minutes">{{ time | date : "mm" }}</td>
+            <td class="seconds">{{ time | date : "ss" }}</td>
+            <td class="ampm">{{ time | date : "a" }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="wait">
+        <h2> Current wait: {{ wait }} </h2>
+        <input name="hours" value="0" ng-model="wait.hours"/>
+        <input name="minutes" value="0" ng-model="wait.minutes"/>
+      </div>
     </div>
   </body>
 </html>
