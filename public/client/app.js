@@ -6,12 +6,19 @@ app.controller("info-controller", function ($scope) {
 });
 
 app.controller("clock-controller", function ($scope, $timeout, $http) {
+  $scope.currentWait = {};
+  $scope.alert = function (msg) {
+    alert(msg);
+  };
   
   var updateTime = function () {
     // gets current wait time from server
     $http.get('/api/wait').then(function (res) {
       // addes current wait time in ms to current time in ms
-      $scope.time = Date.now() + parseInt(res.data);
+      $scope.currentWait.ms = parseInt(res.data);
+      $scope.time = Date.now() + $scope.currentWait.ms;
+      $scope.currentWait.h = Math.floor($scope.currentWait.ms / 3600000);
+      $scope.currentWait.m = Math.floor(($scope.currentWait.ms % 3600000 ) / 60000);
       console.log("Current time:", res.data);
       
       // repeats every second
