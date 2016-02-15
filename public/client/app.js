@@ -6,5 +6,11 @@ app.controller("info-controller", function ($scope) {
 });
 
 app.controller("clock-controller", function ($scope) {
-  $scope.time = Date.now();
+  var updateTime = function () {
+    $scope.time = new Date();
+    console.log("updated");
+    setTimeout(updateTime, 1000);
+  };
+  
+  updateTime();
 });
