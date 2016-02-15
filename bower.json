@@ -15,6 +15,7 @@
     "test",
     "tests"
   ],
+  "directory" : "/public/lib/",
   "dependencies": {
     "angular": "^1.5.0"
   }
