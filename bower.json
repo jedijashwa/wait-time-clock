@@ -1,0 +1,21 @@
+{
+  "name": "wait-clock",
+  "description": "Wait Time Clock Web App",
+  "main": "client/app.js",
+  "authors": [
+    "Josh Riesenbach"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jedijashwa/wait-time-clock",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}

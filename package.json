@@ -1,0 +1,22 @@
+{
+  "name": "wait-clock",
+  "version": "0.0.1",
+  "description": "Wait Time Clock Web App",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jedijashwa/wait-time-clock.git"
+  },
+  "author": "Josh Riesenbach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jedijashwa/wait-time-clock/issues"
+  },
+  "homepage": "https://github.com/jedijashwa/wait-time-clock#readme",
+  "dependencies": {
+    "nodemon": "^1.8.1"
+  }
+}
