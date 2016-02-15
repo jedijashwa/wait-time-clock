@@ -7,8 +7,12 @@ app.controller("info-controller", function ($scope) {
 
 app.controller("clock-controller", function ($scope, $timeout, $http) {
   $scope.currentWait = {};
-  $scope.alert = function (msg) {
-    alert(msg);
+  $scope.updateWait = function () {
+    if ($scope.newWait.ms() !== $scope.currentWait.ms) {
+      $http.post('/api/wait', {"newWait" : $scope.newWait.ms()})
+      .then(function (res) {
+      });
+    }
   };
   
   var updateTime = function () {
@@ -20,17 +24,21 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
       $scope.currentWait.h = Math.floor($scope.currentWait.ms / 3600000);
       $scope.currentWait.m = Math.floor(($scope.currentWait.ms % 3600000 ) / 60000);
       console.log("Current time:", res.data);
-      
+      $scope.newWait.reset();
       // repeats every second
       $timeout(updateTime, 1000);
     });
   };
   
-  $scope.wait = {
-    hours: 0,
-    minutes: 0,
+  $scope.newWait = {
+    h: 0,
+    m: 0,
     ms: function () {
-      return (this.hours * 60 + this.minutes) * 60 * 1000;
+      return (this.h * 60 + this.m) * 60 * 1000;
+    },
+    reset: function () {
+      this.h = $scope.currentWait.h;
+      this.m = $scope.currentWait.m;
     }
   };
   

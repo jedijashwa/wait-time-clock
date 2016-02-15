@@ -24,8 +24,8 @@
       </div>
       <div class="wait">
         <h2> Current wait: {{ currentWait.h }} hours {{ currentWait.m }} minutes </h2>
-        <input name="hours" value="0" ng-model="newWait.h" ng-blur="alert('hour blur')"/>
-        <input name="minutes" value="0" ng-model="newWait.m" ng-blur="alert('minute blur')"/>
+        <input name="hours" value="0" ng-model="newWait.h" ng-blur="updateWait()"/>
+        <input name="minutes" value="0" ng-model="newWait.m" ng-blur="updateWait()"/>
         {{ msg }}
       </div>
     </div>
