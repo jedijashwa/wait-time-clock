@@ -33,3 +33,8 @@ bower_components/
 .floobit
 .floo
 .flooignore
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
