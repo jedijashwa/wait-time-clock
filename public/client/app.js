@@ -17,6 +17,7 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
   };
   
   $scope.editWait = function (field) {
+    $scope.newWait.reset();
     $scope.edit = field;
   };
   
@@ -29,7 +30,6 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
       $scope.currentWait.h = Math.floor($scope.currentWait.ms / 3600000);
       $scope.currentWait.m = Math.floor(($scope.currentWait.ms % 3600000 ) / 60000);
       console.log("Current time:", res.data);
-      // $scope.newWait.reset();
       // repeats every second
       $timeout(updateTime, 1000);
     });
