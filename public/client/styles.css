@@ -1,13 +1,10 @@
-body {
-  font-family: sans-serif;
+.clock div{
+  font-size: 22vw;
 }
 
-.clock table{
-  font-size: 22vw;  
-}
-
-.seconds, .ampm {
-  font-size: 8vw;  
+div .ampm{
+  font-size: 6vw;
+  text-align: right;
 }
 
 .wait{
@@ -23,4 +20,17 @@ body {
   width: 40px;
   text-align: center;
   font-family: sans-serif;
+}
+
+/*Auth0 style*/
+.a0-primary {
+  background-color: black !important;
+}
+
+.a0-top-header {
+  display: none !important;
+}
+
+.a0-panel, .a0-mode-container, .a0-body-content{
+  border-radius: 3px !important;
 }

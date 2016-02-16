@@ -1,38 +1,68 @@
 <html ng-app="app">
   <head>
     <title>Current Wait Time</title>
-    <link rel="stylesheet" type="text/css" href="client/styles.css">
+    <!-- Angular -->
     <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    
+    <!-- JQuery -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    
+    <!-- Materialize -->
+    <script src="lib/Materialize/dist/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/Materialize/dist/css/materialize.min.css">
+    
+    <!-- Auth0 authentication code start -->
+    <script src="//code.angularjs.org/1.2.16/angular-cookies.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock-8.2.min.js"></script>
+    
+    <!-- angular-jwt and angular-storage -->
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js"></script>
+
+    <script src="//cdn.auth0.com/w2/auth0-angular-4.js"> </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Auth0 authentication code end -->
+    
     <script src="client/app.js"></script>
+    <script src="client/auth.js"></script>
+    <link rel="stylesheet" type="text/css" href="client/styles.css">
   </head>
-  <body>
-    <div class="clock-info" ng-controller="info-controller">
-      <h1 class="clock-name">{{ title }}</h1>
-      <h2 class="clock-location">{{ location }}</h2>
+  <body ng-controller="LoginCtrl">
+    <div class="container">
+    <nav>
+    <div class="clock-info nav-wrapper" ng-controller="info-controller">
+      <div class="clock-name brand-logo">{{ title }}</div>
+      <input type="submit" ng-click="logout()" value="Log out" />
     </div>
+    </nav>
+    <div class="clock-location">{{ location }}</div>
     <div ng-controller="clock-controller">
-      <div class="clock">
-        <table>
-          <tr>
-            <td class="hour">{{ time | date : "hh" }}</td>
-            <td class="colon">:</td>
-            <td class="minutes">{{ time | date : "mm" }}</td>
-            <td>
-              <div class="seconds">{{ time | date : "ss" }}</div>
-              <div class="ampm">{{ time | date : "a" }}</div>
-            </td>
-          </tr>
-        </table>
+      <div class="clock card">
+          <div class="row">
+            <div class="col hour">{{ time | date : "hh" }}</div>
+            <div class="col colon">:</div>
+            <div class="col minutes">{{ time | date : "mm" }}</div>
+            <div class="col">
+              <div class"valign-wrapper">
+                <p class="valign ampm">
+                  {{ time | date : "ss" }}<br>
+                  {{ time | date : "a" }}
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       <div class="wait">
         Current wait: 
-        <span ng-if="edit !== 'h'" ng-click="editWait('h')" >{{ currentWait.h }}</span>
-        <input name="hours" value="0" ng-model="newWait.h" ng-if="edit==='h'" ng-blur="updateWait()"/>
+        <span ng-if="edit !== 'Hours'" ng-click="editWait('Hours')" >{{ currentWait.h }}</span>
+        <input id="newHours" name="hours" value="0" ng-model="newWait.h" ng-if="edit==='Hours'" ng-blur="updateWait()"/>
         hours
-        <span ng-if="edit !== 'm'" ng-click="editWait('m')" >{{ currentWait.m }}</span>
-        <input name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='m'" ng-blur="updateWait()"/>
+        <span ng-if="edit !== 'Minutes'" ng-click="editWait('Minutes')" >{{ currentWait.m }}</span>
+        <input id="newMinutes" name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='Minutes'" ng-blur="updateWait()"/>
         minutes
       </div>
+    </div>
     </div>
   </body>
 </html>

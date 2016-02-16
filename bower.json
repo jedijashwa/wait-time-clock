@@ -15,8 +15,10 @@
     "test",
     "tests"
   ],
-  "directory" : "/public/lib/",
+  "directory": "/public/lib/",
   "dependencies": {
-    "angular": "^1.5.0"
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "Materialize": "materialize#^0.97.5"
   }
 }
