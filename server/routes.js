@@ -2,6 +2,8 @@ var path = require('path');
 
 var public = path.resolve(__dirname, '..', 'public');
 
+var db = require(path.resolve(__dirname, '..', 'db/db.js'));
+
 var current = 1800000;
 
 module.exports = function(app){

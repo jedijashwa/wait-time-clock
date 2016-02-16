@@ -18,9 +18,12 @@
   "homepage": "https://github.com/jedijashwa/wait-time-clock#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bookshelf": "^0.9.1",
     "express": "^4.13.4",
+    "knex": "^0.10.0",
     "morgan": "^1.6.1",
-    "nodemon": "^1.8.1"
+    "nodemon": "^1.8.1",
+    "sqlite": "0.0.4"
   },
   "engines": {
     "node": "5.5.0"
