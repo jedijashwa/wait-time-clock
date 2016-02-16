@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jedijashwa/wait-time-clock#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "morgan": "^1.6.1",
