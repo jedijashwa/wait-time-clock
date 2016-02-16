@@ -17,20 +17,21 @@
             <td class="hour">{{ time | date : "hh" }}</td>
             <td class="colon">:</td>
             <td class="minutes">{{ time | date : "mm" }}</td>
-            <td class="seconds">{{ time | date : "ss" }}</td>
-            <td class="ampm">{{ time | date : "a" }}</td>
+            <td>
+              <div class="seconds">{{ time | date : "ss" }}</div>
+              <div class="ampm">{{ time | date : "a" }}</div>
+            </td>
           </tr>
         </table>
       </div>
       <div class="wait">
-        <h2> Current wait: 
-          <span ng-if="edit !== 'h'" ng-click="editWait('h')" >{{ currentWait.h }}</span>
-          <input name="hours" value="0" ng-model="newWait.h" ng-if="edit==='h'" ng-blur="updateWait()"/>
-          hours
-          <span ng-if="edit !== 'm'" ng-click="editWait('m')" >{{ currentWait.m }}</span>
-          <input name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='m'" ng-blur="updateWait()"/>
-          minutes
-        </h2>
+        Current wait: 
+        <span ng-if="edit !== 'h'" ng-click="editWait('h')" >{{ currentWait.h }}</span>
+        <input name="hours" value="0" ng-model="newWait.h" ng-if="edit==='h'" ng-blur="updateWait()"/>
+        hours
+        <span ng-if="edit !== 'm'" ng-click="editWait('m')" >{{ currentWait.m }}</span>
+        <input name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='m'" ng-blur="updateWait()"/>
+        minutes
       </div>
     </div>
   </body>

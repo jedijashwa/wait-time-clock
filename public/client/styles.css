@@ -1,3 +1,26 @@
 body {
   font-family: sans-serif;
 }
+
+.clock table{
+  font-size: 22vw;  
+}
+
+.seconds, .ampm {
+  font-size: 8vw;  
+}
+
+.wait{
+  font-size: 20px;
+  font-weight: bold;
+  height: 30px;
+}
+.wait input {
+  font-size: 20px;
+  font-weight: bold;
+}
+.wait input, span{
+  width: 40px;
+  text-align: center;
+  font-family: sans-serif;
+}
