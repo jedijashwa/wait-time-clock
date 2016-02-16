@@ -1,25 +1,24 @@
-.clock div{
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+header {
+  height: 90px;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+.time {
   font-size: 22vw;
 }
 
 div .ampm{
   font-size: 6vw;
   text-align: right;
-}
-
-.wait{
-  font-size: 20px;
-  font-weight: bold;
-  height: 30px;
-}
-.wait input {
-  font-size: 20px;
-  font-weight: bold;
-}
-.wait input, span{
-  width: 40px;
-  text-align: center;
-  font-family: sans-serif;
 }
 
 /*Auth0 style*/
@@ -33,4 +32,67 @@ div .ampm{
 
 .a0-panel, .a0-mode-container, .a0-body-content{
   border-radius: 3px !important;
+}
+
+.clock-name {
+  font-size: 46px;
+  margin: 7px 0px 0px 0px;
+}
+
+.clock-location {
+  font-size: 20px;
+  margin: 10px 0px;
+}
+
+input {
+  width: 20px;
+  display: inline;
+}
+
+label {
+  margin-right: 10px;
+}
+
+label, #newHours, #newMinutes, span{
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #ADADAD;
+}
+
+.container .row {
+  margin: 0px;
+}
+
+h1, h2, a{
+  font-weight: 200;
+}
+
+#newHours, #newMinutes, span{
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding-bottom: 2px;
+}
+
+#newHours, #newMinutes{
+  border-bottom: 1px solid #ADADAD;
+}
+
+#newHours:focus, #newMinutes:focus{
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+
+#newHours:focus + label, #newMinutes:focus + label {
+  color: #fff;
+}
+
+.card-action {
+  min-height: 88px;
+}
+
+.card {
+  margin-top: calc(50% - 22vw - 100px);
 }

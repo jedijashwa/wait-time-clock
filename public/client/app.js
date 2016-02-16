@@ -98,3 +98,8 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
   
   updateTime();
 });
+
+// activates sidebar on mobile
+$(document).ready(function () {
+  $(".button-collapse").sideNav();
+});

@@ -28,41 +28,72 @@
     <script src="client/auth.js"></script>
     <link rel="stylesheet" type="text/css" href="client/styles.css">
   </head>
-  <body ng-controller="LoginCtrl">
+  <body ng-controller="LoginCtrl" class="blue lighten-4">
+    <header class="blue darken-3">
+    <nav class="blue darken-4">
     <div class="container">
-    <nav>
     <div class="clock-info nav-wrapper" ng-controller="info-controller">
-      <div class="clock-name brand-logo">{{ title }}</div>
-      <input type="submit" ng-click="logout()" value="Log out" />
+      <div class="brand-logo">
+        <h1 class="clock-name">
+          {{ title }}
+        </h1>
+        <h2 class="clock-location">
+          {{ location }}
+        </h2>
+      </div>
+      <a href="#" data-activates="mobile-demo" class="button-collapse mdi-navigation-menu" ng-if="isAuthenticated"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="isAuthenticated">
+        <li><a ng-click="logout()">Sign Out</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo" ng-if="isAuthenticated">
+        <li><a ng-click="logout()">Sign Out</a></li>
+      </ul>
+    </div>
     </div>
     </nav>
-    <div class="clock-location">{{ location }}</div>
-    <div ng-controller="clock-controller">
-      <div class="clock card">
-          <div class="row">
-            <div class="col hour">{{ time | date : "hh" }}</div>
-            <div class="col colon">:</div>
-            <div class="col minutes">{{ time | date : "mm" }}</div>
-            <div class="col">
-              <div class"valign-wrapper">
-                <p class="valign ampm">
-                  {{ time | date : "ss" }}<br>
-                  {{ time | date : "a" }}
-                </p>
+    <div class="row">
+      <div class="col">
+        <div class="clock-location">{{ location }}</div>
+      </div>
+    </div>
+    </header>
+    <main>
+      <div ng-controller="clock-controller">
+        <div class="container">
+          <div class="card">
+            <div class="clock row">
+              <div class="col time">{{ time | date : "hh" }}:{{ time | date : "mm" }}</div>
+              <div class="col">
+                <div class"valign-wrapper">
+                  <p class="valign ampm">
+                    {{ time | date : "ss" }}<br>
+                    {{ time | date : "a" }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="row card-action blue darken-3 white-text">
+              <div class="col">
+                <div>
+                <span ng-if="edit !== 'Hours'" ng-click="editWait('Hours')" >{{ currentWait.h }}</span>
+                <input id="newHours" name="hours" value="0" ng-model="newWait.h" ng-if="edit==='Hours'" ng-blur="updateWait()"/>
+                <label>hours</label>
+                <span ng-if="edit !== 'Minutes'" ng-click="editWait('Minutes')" >{{ currentWait.m }}</span>
+                <input id="newMinutes" name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='Minutes'" ng-blur="updateWait()"/>
+                <label>minutes</label>
+                </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
-      <div class="wait">
-        Current wait: 
-        <span ng-if="edit !== 'Hours'" ng-click="editWait('Hours')" >{{ currentWait.h }}</span>
-        <input id="newHours" name="hours" value="0" ng-model="newWait.h" ng-if="edit==='Hours'" ng-blur="updateWait()"/>
-        hours
-        <span ng-if="edit !== 'Minutes'" ng-click="editWait('Minutes')" >{{ currentWait.m }}</span>
-        <input id="newMinutes" name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='Minutes'" ng-blur="updateWait()"/>
-        minutes
+    </main>
+    <footer class="page-footer blue darken-3">
+      <div class="footer-copyright blue darken-4">
+        <div class="container">
+          © 2016 Josh Riesenbach
+        </div>
       </div>
-    </div>
-    </div>
+    </footer>
   </body>
 </html>
