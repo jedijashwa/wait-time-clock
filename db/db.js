@@ -10,6 +10,8 @@ var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || {
 connection.connect(function (err) {
   if (err) {
     console.error(err);
+  } else {
+    connection.query( " CREATE TABLE 'clocks' ('id' INT(8) NOT NULL AUTO_INCREMENT, 'name' varchar(20) NOT NULL, 'time' INT(13) NOT NULL, 'location_id' INT(6) NOT NULL UNIQUE, PRIMARY KEY ('id') );");
   }
 });
 
