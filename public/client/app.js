@@ -17,7 +17,7 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
   };
   
   $scope.editWait = function (field) {
-    $scope.newWait.reset();
+    $scope.newWait.reset(field);
     $scope.edit = field;
   };
   
@@ -39,11 +39,10 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
     h: 0,
     m: 0,
     ms: function () {
-      return (this.h * 60 + this.m) * 60 * 1000;
+      return this.h * 3600000 + this.m * 60000;
     },
-    reset: function () {
-      this.h = $scope.currentWait.h;
-      this.m = $scope.currentWait.m;
+    reset: function (field) {
+      this[field] = $scope.currentWait[field];
     }
   };
   
