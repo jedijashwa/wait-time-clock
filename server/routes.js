@@ -9,8 +9,8 @@ module.exports = function(app){
   });
   
   app.get('/api/wait/', function(req, res){
-    db.getTime(1, function (err, results, fields) {
-      res.send(JSON.stringify(results[0].time));
+    db.getTime(1, function (time) {
+      res.send(JSON.stringify(time));
     });
   });
   

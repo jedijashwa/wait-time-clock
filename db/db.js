@@ -11,7 +11,15 @@ connection.connect(function (err) {
   if (err) {
     console.error(err);
   } else {
-    connection.query( " CREATE TABLE 'clocks' ('id' INTEGER(8) NOT NULL AUTO_INCREMENT, 'name' varchar(20) NOT NULL, 'time' INTEGER(13) NOT NULL, 'location_id' INTEGER(6) NOT NULL UNIQUE, PRIMARY KEY ('id') );");
+    connection.query( "\
+      CREATE TABLE IF NOT EXISTS `clocks` (\
+        `id` INT(8) NOT NULL AUTO_INCREMENT,\
+        `name` varchar(20) NOT NULL DEFAULT 'WAIT CLOCK',\
+        `time` INT(13) NOT NULL,\
+        `location_id` INT(6) NOT NULL DEFAULT 1,\
+        PRIMARY KEY (`id`)\
+      );\
+    ");
   }
 });
 
@@ -20,5 +28,12 @@ module.exports.setTime = function (clock, time) {
 };
 
 module.exports.getTime = function (clock, cb) {
-  connection.query("SELECT time FROM clocks WHERE id = ?", [clock], cb);
+  connection.query("SELECT time FROM clocks WHERE id = ?", [clock], function (err, results, fields) {
+    if(results.length > 0) {
+      cb(results[0].time);
+    } else {
+      connection.query("INSERT INTO clocks (time) VALUES (?)", [1800000]);
+      cb(1800000);
+    }
+  });
 };
