@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host: process.env.JAWSDB_URL || 'localhost',
-  user: 'root',
-  password: '',
+  host: process.env.JAWSDB_HOST || 'localhost',
+  user: process.env.JAWSDB_USERNAME || 'root',
+  password: process.env.JAWSDB_PASSWORD || '',
   database: 'waitclock'
 });
 
