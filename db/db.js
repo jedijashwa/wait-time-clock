@@ -7,7 +7,11 @@ var connection = mysql.createConnection({
   database: 'waitclock'
 });
 
-connection.connect();
+connection.connect(function (err) {
+  if (err) {
+    console.error(err);
+  }
+});
 
 module.exports.setTime = function (clock, time) {
   connection.query("UPDATE clocks SET time = ? WHERE id = ?", [time, clock]);
