@@ -19,6 +19,7 @@ function ($scope, $http, auth, store, $location) {
     auth.signout();
     store.remove('profile');
     store.remove('token');
+    $scope.edit = false;
     $scope.isAuthenticated = auth.isAuthenticated;
   };
 }]);
