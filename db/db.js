@@ -19,6 +19,8 @@ connection.connect(function (err) {
         `location_id` INT(6) NOT NULL DEFAULT 1,\
         PRIMARY KEY (`id`)\
       );\
+      SET @@auto_increment_increment=1;\
+      ALTER TABLE Persons AUTO_INCREMENT=1\
     ");
   }
 });

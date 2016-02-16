@@ -1,6 +1,7 @@
 var path = require('path');
 var public = path.resolve(__dirname, '..', 'public');
 var db = require(path.resolve(__dirname, '..', 'db/db.js'));
+var clockID = process.env.CLOCK || 1;
 
 module.exports = function(app){
 
@@ -9,14 +10,14 @@ module.exports = function(app){
   });
   
   app.get('/api/wait/', function(req, res){
-    db.getTime(1, function (time) {
+    db.getTime(clockID, function (time) {
       res.send(JSON.stringify(time));
     });
   });
   
   app.post('/api/wait/', function(req, res){
     var current = parseInt(req.body.newWait);
-    db.setTime(1, current);
+    db.setTime(clockID, current);
     res.send(200);
   });
   
