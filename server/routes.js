@@ -1,10 +1,6 @@
 var path = require('path');
-
 var public = path.resolve(__dirname, '..', 'public');
-
 var db = require(path.resolve(__dirname, '..', 'db/db.js'));
-
-var current = 1800000;
 
 module.exports = function(app){
 
@@ -13,12 +9,14 @@ module.exports = function(app){
   });
   
   app.get('/api/wait/', function(req, res){
-    res.send(JSON.stringify(current));
+    db.getTime(1, function (err, results, fields) {
+      res.send(JSON.stringify(results[0].time));
+    });
   });
   
   app.post('/api/wait/', function(req, res){
-    console.log(req.body);
-    current = parseInt(req.body.newWait);
+    var current = parseInt(req.body.newWait);
+    db.setTime(1, current);
     res.send(200);
   });
   
