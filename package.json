@@ -4,6 +4,7 @@
   "description": "Wait Time Clock Web App",
   "main": "server.js",
   "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "nodemon server/server.js"
   },
   "repository": {
