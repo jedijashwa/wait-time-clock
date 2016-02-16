@@ -13,6 +13,11 @@ app.controller("clock-controller", function ($scope, $timeout, $http) {
       .then(function (res) {
       });
     }
+    $scope.edit = false;
+  };
+  
+  $scope.editWait = function (field) {
+    $scope.edit = field;
   };
   
   var updateTime = function () {

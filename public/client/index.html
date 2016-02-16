@@ -23,10 +23,14 @@
         </table>
       </div>
       <div class="wait">
-        <h2> Current wait: {{ currentWait.h }} hours {{ currentWait.m }} minutes </h2>
-        <input name="hours" value="0" ng-model="newWait.h" ng-blur="updateWait()"/>
-        <input name="minutes" value="0" ng-model="newWait.m" ng-blur="updateWait()"/>
-        {{ msg }}
+        <h2> Current wait: 
+          <span ng-if="edit !== 'h'" ng-click="editWait('h')" >{{ currentWait.h }}</span>
+          <input name="hours" value="0" ng-model="newWait.h" ng-if="edit==='h'" ng-blur="updateWait()"/>
+          hours
+          <span ng-if="edit !== 'm'" ng-click="editWait('m')" >{{ currentWait.m }}</span>
+          <input name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='m'" ng-blur="updateWait()"/>
+          minutes
+        </h2>
       </div>
     </div>
   </body>
