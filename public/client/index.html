@@ -58,15 +58,17 @@
       <div ng-controller="clock-controller">
         <div class="container">
           <div class="valign-wrapper">
-            <div class="card valign block">
+            <div class="card">
               <div class="clock row">
                 <div class="col time">{{ time | date : "hh" }}:{{ time | date : "mm" }}</div>
-                <div class="col ampm">
+                <div class="col">
+                  <div class="ampm">
                   <div class"valign-wrapper">
                     <p class="valign">
                       {{ time | date : "ss" }}<br>
                       {{ time | date : "a" }}
                     </p>
+                  </div>
                   </div>
                 </div>
               </div>

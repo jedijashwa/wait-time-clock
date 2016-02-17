@@ -17,10 +17,9 @@ main {
 }
 
 .ampm{
-  position: relative;
   font-size: 7vw;
   text-align: right;
-  top: -1vw;
+  margin-top: -1vw;
 }
 
 /*Auth0 style*/
@@ -93,8 +92,10 @@ label, #newHours, #newMinutes, span{
 
 .card-action {
   min-height: 88px;
+  border-radius: 0 0 5px 5px;
 }
 
 .card {
-  margin-top: calc(50% - 22vw - 100px);
+  margin: 10vh auto 1rem auto;
+  border-radius: 5px;
 }
