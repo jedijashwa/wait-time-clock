@@ -62,6 +62,9 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
   $scope.editWait = function (field) {
     if (auth.isAuthenticated) {
       $scope.edit = field;
+      setTimeout(function () {
+        $('#new' + field).focus();
+      }, 100);
     } else {
       $scope.login(field);
     }
@@ -77,7 +80,6 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
       $scope.time = Date.now() + $scope.currentWait.ms;
       $scope.currentWait.h = Math.floor($scope.currentWait.ms / 3600000);
       $scope.currentWait.m = Math.floor(($scope.currentWait.ms % 3600000 ) / 60000);
-      console.log("Current time:", res.data);
       
       if(!$scope.edit) {
         $scope.newWait.reset();
