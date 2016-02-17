@@ -4,6 +4,16 @@ var app = angular.module('app',[
   'angular-jwt', 
   'ngRoute'
 ])
+// routing
+.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl : 'client/clock.html'
+    })
+    .when('/clocks', {
+      templateUrl : 'clocks.html'
+    });
+})
 
 // Auth0 setup start
 .config(function (authProvider) {
