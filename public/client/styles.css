@@ -16,9 +16,11 @@ main {
   font-size: 22vw;
 }
 
-div .ampm{
-  font-size: 6vw;
+.ampm{
+  position: relative;
+  font-size: 7vw;
   text-align: right;
+  top: -1vw;
 }
 
 /*Auth0 style*/
