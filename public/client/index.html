@@ -1,6 +1,6 @@
 <html ng-app="app">
   <head>
-    <title>Current Wait Time</title>
+    <title>{{title}} - Current Wait Time</title>
     <!-- Angular -->
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
@@ -29,17 +29,12 @@
     <link rel="stylesheet" type="text/css" href="client/styles.css">
   </head>
   <body ng-controller="LoginCtrl" class="blue lighten-4">
-    <header class="blue darken-3">
+    <header>
     <nav class="blue darken-4">
     <div class="container">
     <div class="clock-info nav-wrapper" ng-controller="info-controller">
       <div class="brand-logo">
-        <h1 class="clock-name">
           {{ title }}
-        </h1>
-        <h2 class="clock-location">
-          {{ location }}
-        </h2>
       </div>
       <a href="#" data-activates="mobile-demo" class="button-collapse mdi-navigation-menu" ng-if="isAuthenticated"></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="isAuthenticated">
@@ -51,9 +46,11 @@
     </div>
     </div>
     </nav>
-    <div class="row">
-      <div class="col">
-        <div class="clock-location">{{ location }}</div>
+    <div class="row blue darken-3 clock-location hide-on-med-and-down">
+      <div class="container">
+        <div class="col">
+          <div>{{ location }}</div>
+        </div>
       </div>
     </div>
     </header>

@@ -42,9 +42,9 @@ var app = angular.module('app',[
 });
 // end of Auth0 set up
 
-app.controller("info-controller", function ($scope) {
-  $scope.title = "Wait Time Clock Demo";
-  $scope.location = "riesenable.io";
+app.controller("info-controller", function ($rootScope) {
+  $rootScope.title = "Wait Time Clock Demo";
+  $rootScope.location = "riesenable.io";
 });
 
 app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element) {

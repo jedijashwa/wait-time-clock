@@ -34,14 +34,18 @@ div .ampm{
   border-radius: 3px !important;
 }
 
-.clock-name {
+.brand-logo, .clock-location {
+  font-weight: 200;
+  color: #fff;
+}
+
+.brand-logo {
   font-size: 46px;
-  margin: 7px 0px 0px 0px;
 }
 
 .clock-location {
   font-size: 20px;
-  margin: 10px 0px;
+  margin-left: -15px;
 }
 
 input {
@@ -63,10 +67,6 @@ label, #newHours, #newMinutes, span{
 
 .container .row {
   margin: 0px;
-}
-
-h1, h2, a{
-  font-weight: 200;
 }
 
 #newHours, #newMinutes, span{
