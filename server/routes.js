@@ -26,6 +26,14 @@ module.exports = function(app){
     res.sendFile(public + '/client/index.html');
   });
   
+  app.get('/clock/*', function (req, res) {
+    res.redirect('/#' + req.originalUrl);
+  });
+  
+  app.get('/clocks/*', function (req, res) {
+    res.redirect('/#/clocks');
+  });
+  
   app.get('/api/wait/', function(req, res){
     db.getTime(clockID, function (time) {
       res.send(JSON.stringify(time));

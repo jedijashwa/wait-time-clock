@@ -11,7 +11,10 @@ var app = angular.module('app',[
       templateUrl : 'client/clock.html'
     })
     .when('/clocks', {
-      templateUrl : 'clocks.html'
+      templateUrl : 'client/clocks.html'
+    })
+    .when('/clock/:clock_id', {
+      templateUrl : 'client/clock.html'
     });
 })
 
