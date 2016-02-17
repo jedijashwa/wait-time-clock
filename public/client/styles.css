@@ -35,7 +35,7 @@ main {
   border-radius: 3px !important;
 }
 
-.brand-logo, .clock-location {
+.brand-logo, .clock-location, .footer-copyright a {
   font-weight: 200;
   color: #fff;
 }
@@ -86,7 +86,7 @@ label, #newHours, #newMinutes, span{
   color: #fff;
 }
 
-#newHours:focus + label, #newMinutes:focus + label {
+#newHours:focus + label, #newMinutes:focus + label{
   color: #fff;
 }
 

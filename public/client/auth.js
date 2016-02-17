@@ -8,7 +8,7 @@ function ($scope, $http, auth, store, $location) {
       $location.path('/');
       $scope.isAuthenticated = auth.isAuthenticated;
       if (field) {
-        $scope.edit = field;
+        $scope.editWait(field);
       }
     }, function () {
       // Error callback

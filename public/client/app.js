@@ -59,7 +59,7 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
     $scope.edit = false;
   };
   
-  $scope.editWait = function (field) {
+  $scope.$parent.editWait = function (field) {
     if (auth.isAuthenticated) {
       $scope.edit = field;
       setTimeout(function () {
