@@ -50,7 +50,6 @@ app.controller("info-controller", function ($rootScope) {
 
 app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element) {
   $scope.currentWait = {};
-  $scope.isAuthenticated = auth.isAuthenticated;
   $scope.updateWait = function () {
     if ($scope.newWait.ms() !== $scope.currentWait.ms) {
       $http.post('/api/update', {"newWait" : $scope.newWait.ms()})
@@ -69,6 +68,8 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
   };
   
   var updateTime = function () {
+    $scope.$parent.isAuthenticated = auth.isAuthenticated;
+
     // gets current wait time from server
     $http.get('/api/wait').then(function (res) {
       // addes current wait time in ms to current time in ms
