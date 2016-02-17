@@ -28,12 +28,12 @@ connection.connect(function (err) {
         FOREIGN KEY (`id`) REFERENCES locations (`id`)\
       );\
     ");
-    connection.query("INSERT INTO locations (name) VALUES ('riesenable.io')", function(err, results, fields) {
+    connection.query("INSERT IGNORE INTO locations (name) VALUES ('riesenable.io')", function(err, results, fields) {
       if(err) {
         console.error(err);
       }
     });
-    connection.query("INSERT INTO clocks (name, location_id) VALUES ('Wait Clock Demo', \
+    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Wait Clock Demo', \
         (SELECT id FROM locations WHERE name='riesenable.io')\
       )", function(err, results, fields) {
       if(err) {
@@ -55,5 +55,12 @@ module.exports.getTime = function (clock, cb) {
       connection.query("INSERT INTO clocks (time) VALUES (?)", [1800000]);
       cb(1800000);
     }
+  });
+};
+
+// function pushes all contents of table into cb
+module.exports.getTable = function (table, cb) {
+  connection.query("SELECT * FROM ??", table, function (err, results, fields) {
+    cb(results);
   });
 };
