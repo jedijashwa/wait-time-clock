@@ -9,9 +9,18 @@ var jwtCheck = jwt({
   audience: '3y4I7YR2w0tbSitWGGA5aedYF8Apx4ts'
 });
 
+// array of all routes that should be behind authentication wall
+var authenticationRequired = [
+  '/api/update'
+];
+
 module.exports = function(app){
   
-  app.use('/api/update', jwtCheck);
+  // uses authentication check for all routes in authenticationRequired
+  authenticationRequired.forEach(function (route) {
+    app.use(route, jwtCheck);
+  });
+
 
   app.get('/', function(req, res){
     res.sendFile(public + '/client/index.html');
