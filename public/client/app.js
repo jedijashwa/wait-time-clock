@@ -39,6 +39,7 @@ var app = angular.module('app',[
       }
     }
   });
+  
 });
 // end of Auth0 set up
 
@@ -49,6 +50,7 @@ app.controller("info-controller", function ($rootScope) {
 
 app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element) {
   $scope.currentWait = {};
+  $scope.isAuthenticated = auth.isAuthenticated;
   $scope.updateWait = function () {
     if ($scope.newWait.ms() !== $scope.currentWait.ms) {
       $http.post('/api/update', {"newWait" : $scope.newWait.ms()})
