@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 
-var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || {
+var connection = mysql.createConnection(process.env.DATABASE_URL || {
   host: 'localhost',
   user: 'root',
   password: '',
@@ -12,14 +12,34 @@ connection.connect(function (err) {
     console.error(err);
   } else {
     connection.query( "\
-      CREATE TABLE IF NOT EXISTS `clocks` (\
+      CREATE TABLE IF NOT EXISTS `locations` (\
         `id` INT(8) NOT NULL AUTO_INCREMENT,\
-        `name` varchar(20) NOT NULL DEFAULT 'WAIT CLOCK',\
-        `time` INT(13) NOT NULL,\
-        `location_id` INT(6) NOT NULL DEFAULT 1,\
+        `name` varchar(20) NOT NULL UNIQUE,\
         PRIMARY KEY (`id`)\
       );\
     ");
+    connection.query( "\
+      CREATE TABLE IF NOT EXISTS `clocks` (\
+        `id` INT(8) NOT NULL AUTO_INCREMENT,\
+        `name` varchar(20) NOT NULL,\
+        `time` INT(13) NOT NULL DEFAULT 1800000,\
+        `location_id` INT(6) NOT NULL DEFAULT 1,\
+        PRIMARY KEY (`id`),\
+        FOREIGN KEY (`id`) REFERENCES locations (`id`)\
+      );\
+    ");
+    connection.query("INSERT INTO locations (name) VALUES ('riesenable.io')", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
+    connection.query("INSERT INTO clocks (name, location_id) VALUES ('Wait Clock Demo', \
+        (SELECT id FROM locations WHERE name='riesenable.io')\
+      )", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
   }
 });
 
