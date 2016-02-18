@@ -56,12 +56,10 @@ var app = angular.module('app',[
 });
 // end of Auth0 set up
 
-app.controller("info-controller", function ($rootScope) {
-  $rootScope.title = "Wait Time Clock Demo";
-  $rootScope.location = "riesenable.io";
+app.controller("info-controller", function ($scope, $rootScope) {
 });
 
 // activates sidebar on mobile
 $(document).ready(function () {
-  $(".button-collapse").sideNav();
+  $('body').find(".button-collapse").sideNav();
 });
