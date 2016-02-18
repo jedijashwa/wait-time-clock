@@ -2,7 +2,8 @@ var app = angular.module('app',[
   'auth0', 
   'angular-storage', 
   'angular-jwt', 
-  'ngRoute'
+  'ngRoute',
+  'ngAnimate'
 ])
 // routing
 .config(function ($routeProvider) {

@@ -4,7 +4,7 @@
     <!-- Angular -->
     <script src="../lib/angular/angular.min.js"></script>
     <script src="../lib/angular-route/angular-route.min.js"></script>
-    
+    <script src="../lib/angular-animate/angular-animate.min.js"></script>
     <!-- JQuery -->
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     
@@ -42,7 +42,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="isAuthenticated">
         <li><a ng-click="logout()">Sign Out</a></li>
       </ul>
-      <ul class="side-nav" id="mobile-demo" <!-- ng-if="isAuthenticated" -->>
+      <ul class="side-nav" id="mobile-demo" ng-if="isAuthenticated">
         <li><a ng-click="logout()">Sign Out</a></li>
       </ul>
     </div>
