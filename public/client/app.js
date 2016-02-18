@@ -58,7 +58,8 @@ var app = angular.module('app',[
 });
 // end of Auth0 set up
 
-app.controller("info-controller", function ($scope, $rootScope) {
+app.controller("info-controller", function ($scope, auth) {
+  $scope.logout = auth.logout();
 });
 
 // activates sidebar on mobile
