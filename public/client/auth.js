@@ -1,4 +1,4 @@
-angular.module('app').controller('LoginCtrl', ['$scope', '$http', 'auth', 'store', '$location',
+angular.module('app').controller('LoginCtrl', ['$scope', '$rootScope', '$http', 'auth', 'store', '$location',
 function ($scope, $rootScope, $http, auth, store, $location) {
   $scope.login = function (field) {
     auth.signin({}, function (profile, token) {
