@@ -1,12 +1,12 @@
 angular.module('app').controller('LoginCtrl', ['$scope', '$http', 'auth', 'store', '$location',
-function ($scope, $http, auth, store, $location) {
+function ($scope, $rootScope, $http, auth, store, $location) {
   $scope.login = function (field) {
     auth.signin({}, function (profile, token) {
       // Success callback
       store.set('profile', profile);
       store.set('token', token);
       $location.path('/');
-      $scope.isAuthenticated = auth.isAuthenticated;
+      $rootScope.isAuthenticated = auth.isAuthenticated;
       if (field) {
         $scope.editWait(field);
       }
@@ -20,7 +20,7 @@ function ($scope, $http, auth, store, $location) {
     store.remove('profile');
     store.remove('token');
     $scope.edit = false;
-    $scope.isAuthenticated = auth.isAuthenticated;
+    $rootScope.isAuthenticated = auth.isAuthenticated;
   };
 }]);
 

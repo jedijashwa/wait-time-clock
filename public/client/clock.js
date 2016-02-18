@@ -28,8 +28,6 @@ app.controller("clock-controller", function ($scope, $rootScope, $timeout, $http
   };
   
   var updateTime = function () {
-    $scope.$parent.isAuthenticated = auth.isAuthenticated;
-
     // gets current wait time from server
     $http.get('/api/wait/?clock_id='+clockID).then(function (res) {
       // addes current wait time in ms to current time in ms

@@ -52,6 +52,7 @@ var app = angular.module('app',[
         $location.path('/');
       }
     }
+    $rootScope.isAuthenticated = auth.isAuthenticated;
   });
   
 });

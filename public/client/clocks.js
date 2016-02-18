@@ -3,8 +3,6 @@ app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $htt
   $rootScope.name = 'Wait Clock';
   
   var getLocations = function () {
-    $scope.$parent.isAuthenticated = auth.isAuthenticated;
-
     // gets current wait time from server
     $http.get('/api/locations/').then(function (res) {
       // addes current wait time in ms to current time in ms
