@@ -5,7 +5,7 @@ function ($scope, $rootScope, $http, auth, store, $location) {
       // Success callback
       store.set('profile', profile);
       store.set('token', token);
-      $location.path('/');
+//      $location.path('/');
       $rootScope.isAuthenticated = auth.isAuthenticated;
       if (field) {
         $scope.editWait(field);
