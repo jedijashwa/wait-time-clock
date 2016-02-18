@@ -1,5 +1,20 @@
 <div ng-controller='clocks-controller'>
   <div class='container'>
+    <div class='row'>
+      <div class='card new-location'>
+        <div class='card-content'>
+          <div class='card-title' ng-click='expand(0);'>
+          New Organization
+          </div>
+          <div class="collection animate-if" ng-if='expanded === 0'>
+            <div class="input-field col s6">
+              <input id="new_location_name" type="text" class="validate" ng-model="new_location_name" required="">
+              <label for="new_location_name">Organization name</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class='row' ng-repeat='location in locations'>
       <div class='card' ng-if="location.clocks.length">
         <div class='card-content'>
@@ -7,7 +22,7 @@
             {{ location.name }}
           </div>
           <div class="collection animate-if" ng-if='expanded === location.id'>
-            <a href="#/clock/{{ clock.id }}" class="collection-item" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
+            <a href="#/clock/{{ clock.id }}" class="collection-item blue-text darken-3" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
           </div>
         </div>
       </div>

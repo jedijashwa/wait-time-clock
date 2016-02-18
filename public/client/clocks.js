@@ -17,10 +17,14 @@ app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $htt
   };
   
   $scope.expand = function (location) {
-    if ($scope.expanded === location) {
+    if (location === undefined) {
       $scope.expanded = false;
     } else {
-      $scope.expanded = location;
+      if ($scope.expanded === location) {
+        $scope.expanded = false;
+      } else {
+        $scope.expanded = location;
+      }
     }
   }
   

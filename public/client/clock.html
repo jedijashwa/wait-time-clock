@@ -1,8 +1,8 @@
 <div ng-controller="clock-controller">
   <div class="container">
     <div class="valign-wrapper">
-      <div class="card">
-        <div class="clock row">
+      <div class="card clock">
+        <div class="row">
           <div class="col time">{{ time | date : "hh" }}:{{ time | date : "mm" }}</div>
           <div class="col">
             <div class="ampm">
@@ -20,10 +20,10 @@
             <div>
             <span ng-if="edit !== 'Hours'" ng-click="editWait('Hours')" >{{ currentWait.h }}</span>
             <input id="newHours" name="hours" value="0" ng-model="newWait.h" ng-if="edit==='Hours'" ng-blur="updateWait()"/>
-            <label>hours</label>
+            <label class='new-hours'>hours</label>
             <span ng-if="edit !== 'Minutes'" ng-click="editWait('Minutes')" >{{ currentWait.m }}</span>
             <input id="newMinutes" name="minutes" value="0" ng-model="newWait.m" ng-if="edit==='Minutes'" ng-blur="updateWait()"/>
-            <label>minutes</label>
+            <label class='new-minutes'>minutes</label>
             </div>
           </div>
         </div>
