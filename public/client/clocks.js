@@ -1,4 +1,6 @@
-app.controller("clocks-controller", function ($scope, $timeout, $http, auth, $element) {
+app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $http, auth, $element) {
+  $rootScope.location = 'Please select a clock below.';
+  $rootScope.name = 'Wait Clock';
   
   var getLocations = function () {
     $scope.$parent.isAuthenticated = auth.isAuthenticated;
@@ -16,5 +18,20 @@ app.controller("clocks-controller", function ($scope, $timeout, $http, auth, $el
     });
   };
   
+  $scope.expand = function (location) {
+    if ($scope.expanded === location) {
+      $scope.expanded = false;
+    } else {
+      $scope.expanded = location;
+    }
+  }
+  
   getLocations();
+  
+  $(document).ready(function(){
+    $('body').find('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+        
 });

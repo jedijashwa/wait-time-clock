@@ -1,11 +1,12 @@
-app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element, $location) {
+app.controller("clock-controller", function ($scope, $rootScope, $timeout, $http, auth, $element, $location) {
   var clockID = $location.path().substr(7);
   $scope.currentWait = {};
   
   $http.get('/api/clock/?clock_id=' + clockID).then(function (res) {
-    $scope.location = res.location;
-    $scope.name = res.name;
+    $rootScope.location = res.data[0].location;
+    $rootScope.name = res.data[0].name;
   });
+  
   $scope.updateWait = function () {
     if ($scope.newWait.ms() !== $scope.currentWait.ms) {
       $http.post('/api/update/?clock_id=' + clockID, {"newWait" : $scope.newWait.ms()})

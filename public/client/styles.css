@@ -99,3 +99,32 @@ label, #newHours, #newMinutes, span{
   margin: 10vh auto 1rem auto;
   border-radius: 5px;
 }
+
+/*animate ng-if*/
+ .animate-if.ng-enter, .animate-if.ng-leave {
+    -webkit-transition: 5s linear all;
+    -moz-transition: 5s linear all;
+    -ms-transition: 5s linear all;
+    -o-transition: 5s linear all;
+    transition: 5s linear all;
+}
+
+ .animate-if.ng-enter {
+    max-height: 0;
+    opacity: 0;
+}
+
+ .animate-if.ng-enter.ng-enter-active {
+    max-height: 999px;
+    opacity:1;
+}
+
+ .animate-if.ng-leave {
+    max-height: 999px;
+    opacity:1;
+}
+
+ .animate-if.ng-leave.ng-leave-active {
+    max-height: 0;
+    opacity:1;
+}

@@ -99,8 +99,10 @@ module.exports.getClocks = function (location, cb) {
 };
 
 module.exports.getClock = function (clock, cb) {
-  connection.query("SELECT clocks.name, locations.name FROM clocks, locations\
-    WHERE clocks.id IS ?", [clock], function (err, results, fields) {
+  connection.query("SELECT clocks.name AS name, locations.name AS location FROM clocks LEFT JOIN (locations)\
+                    ON (locations.id=clocks.location_id)\
+                    WHERE clocks.id=?", [clock], 
+    function (err, results, fields) {
       cb(results);
     }
   );

@@ -3,10 +3,10 @@
     <div class='row' ng-repeat='location in locations'>
       <div class='card' ng-if="location.clocks.length">
         <div class='card-content'>
-          <div class='card-title'>
+          <div class='card-title' ng-click='expand(location.id);'>
             {{ location.name }}
           </div>
-          <div class="collection">
+          <div class="collection animate-if" ng-if='expanded === location.id'>
             <a href="#/clock/{{ clock.id }}" class="collection-item" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
           </div>
         </div>
