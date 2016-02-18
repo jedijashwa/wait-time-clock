@@ -1,3 +1,16 @@
-<div ng-controller='clocks'>
-There will be lists here...
+<div ng-controller='clocks-controller'>
+  <div class='container'>
+    <div class='row' ng-repeat='location in locations'>
+      <div class='card' ng-if="location.clocks.length">
+        <div class='card-content'>
+          <div class='card-title'>
+            {{ location.name }}
+          </div>
+          <div class="collection">
+            <a href="#/clock/{{ clock.id }}" class="collection-item" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

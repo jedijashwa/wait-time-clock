@@ -2,7 +2,6 @@ var path = require('path');
 var jwt = require('express-jwt');
 var public = path.resolve(__dirname, '..', 'public');
 var db = require(path.resolve(__dirname, '..', 'db/db.js'));
-var clockID = process.env.CLOCK || 1;
 
 var jwtCheck = jwt({
   secret: new Buffer('83xgRTMwO3DkotHIKH62x6K__x-VoYoH_q8pocaoRsnj1RLMd2CCSsphAwxuABfE', 'base64'),
@@ -14,7 +13,10 @@ var authenticationRequired = [
   '/api/update'
 ];
 
-module.exports = function(app){
+module.exports = function(app, express){
+  
+  // serve static files
+  app.use(express.static(public))
   
   // uses authentication check for all routes in authenticationRequired
   authenticationRequired.forEach(function (route) {
@@ -34,20 +36,41 @@ module.exports = function(app){
     res.redirect('/#/clocks');
   });
   
+  // api calls
+  
   app.get('/api/wait/', function(req, res){
-    db.getTime(clockID, function (time) {
+    db.getTime(req.param('clock_id'), function (time) {
       res.send(JSON.stringify(time));
     });
   });
   
   app.post('/api/update/', function(req, res){
     var current = parseInt(req.body.newWait);
-    db.setTime(clockID, current);
+    db.setTime(req.param('clock_id'), current);
     res.send(200);
   });
   
+  app.get('/api/locations/', function(req, res) {
+    db.getTable('locations', 'name', function(results) {
+      res.send(results);
+    });
+  });
+  
+  app.get('/api/clocks', function(req, res) {
+    db.getClocks(req.param('location_id'), function(results) {
+      res.send(results);
+    });
+  });
+  
+  app.get('/api/clock', function(req, res) {
+    db.getClock(req.param('clock_id'), function(results) {
+      res.send(results);
+    });
+  });
+  
+  // default to homepage
   app.get('*', function(req, res) {
-    res.sendFile(public + req.url);
+    res.redirect('/');
   });
     
 };

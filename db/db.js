@@ -25,7 +25,7 @@ connection.connect(function (err) {
         `time` INT(13) NOT NULL DEFAULT 1800000,\
         `location_id` INT(6) NOT NULL DEFAULT 1,\
         PRIMARY KEY (`id`),\
-        FOREIGN KEY (`id`) REFERENCES locations (`id`)\
+        CONSTRAINT `clocks_fk0` FOREIGN KEY (`location_id`) REFERENCES `locations`(`id`)\
       );\
     ");
     connection.query("INSERT IGNORE INTO locations (name) VALUES ('riesenable.io')", function(err, results, fields) {
@@ -33,8 +33,34 @@ connection.connect(function (err) {
         console.error(err);
       }
     });
+    connection.query("INSERT IGNORE INTO locations (name) VALUES ('Apple R031')", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
     connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Wait Clock Demo', \
         (SELECT id FROM locations WHERE name='riesenable.io')\
+      )", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
+    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Wait Clock Demo 2', \
+        (SELECT id FROM locations WHERE name='riesenable.io')\
+      )", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
+    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('iPhones', \
+        (SELECT id FROM locations WHERE id=2)\
+      )", function(err, results, fields) {
+      if(err) {
+        console.error(err);
+      }
+    });
+    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Same Day Repairs', \
+        (SELECT id FROM locations WHERE id=2)\
       )", function(err, results, fields) {
       if(err) {
         console.error(err);
@@ -59,8 +85,23 @@ module.exports.getTime = function (clock, cb) {
 };
 
 // function pushes all contents of table into cb
-module.exports.getTable = function (table, cb) {
-  connection.query("SELECT * FROM ??", table, function (err, results, fields) {
+module.exports.getTable = function (table, sort, cb) {
+  sort = sort || 'id';
+  connection.query("SELECT * FROM ?? ORDER BY ??", [table, sort], function (err, results, fields) {
     cb(results);
   });
 };
+
+module.exports.getClocks = function (location, cb) {
+  connection.query("SELECT * FROM clocks WHERE location_id=?", [location], function (err, results, fields) {
+    cb(results);
+  });
+};
+
+module.exports.getClock = function (clock, cb) {
+  connection.query("SELECT clocks.name, locations.name FROM clocks, locations\
+    WHERE clocks.id IS ?", [clock], function (err, results, fields) {
+      cb(results);
+    }
+  );
+}

@@ -1,8 +1,14 @@
-app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element) {
+app.controller("clock-controller", function ($scope, $timeout, $http, auth, $element, $location) {
+  var clockID = $location.path().substr(7);
   $scope.currentWait = {};
+  
+  $http.get('/api/clock/?clock_id=' + clockID).then(function (res) {
+    $scope.location = res.location;
+    $scope.name = res.name;
+  });
   $scope.updateWait = function () {
     if ($scope.newWait.ms() !== $scope.currentWait.ms) {
-      $http.post('/api/update', {"newWait" : $scope.newWait.ms()})
+      $http.post('/api/update/?clock_id=' + clockID, {"newWait" : $scope.newWait.ms()})
       .then(function (res) {
       });
     }
@@ -24,7 +30,7 @@ app.controller("clock-controller", function ($scope, $timeout, $http, auth, $ele
     $scope.$parent.isAuthenticated = auth.isAuthenticated;
 
     // gets current wait time from server
-    $http.get('/api/wait').then(function (res) {
+    $http.get('/api/wait/?clock_id='+clockID).then(function (res) {
       // addes current wait time in ms to current time in ms
       $scope.currentWait.ms = parseInt(res.data);
       $scope.time = Date.now() + $scope.currentWait.ms;

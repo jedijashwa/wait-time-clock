@@ -8,9 +8,9 @@ var app = angular.module('app',[
 .config(function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl : 'client/clock.html'
+      templateUrl : 'client/clocks.html'
     })
-    .when('/clocks', {
+    .when('/clocks/', {
       templateUrl : 'client/clocks.html'
     })
     .when('/clock/:clock_id', {
