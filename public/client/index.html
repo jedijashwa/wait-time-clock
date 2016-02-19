@@ -39,11 +39,13 @@
           {{ name }}
       </div>
       <a href="#" data-activates="mobile-demo" class="button-collapse mdi-navigation-menu" ng-if="isAuthenticated"></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down" ng-if="isAuthenticated">
-        <li><a ng-click="logout()">Sign Out</a></li>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/#/">Clocks</a></li>
+        <li><a ng-click="logout()" ng-if="isAuthenticated">Sign Out</a></li>
       </ul>
-      <ul class="side-nav" id="mobile-demo" ng-if="isAuthenticated">
-        <li><a ng-click="logout()">Sign Out</a></li>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="/#/">Clocks</a></li>
+        <li><a ng-click="logout()" ng-if="isAuthenticated">Sign Out</a></li>
       </ul>
     </div>
     </div>

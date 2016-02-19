@@ -162,3 +162,15 @@ label.new-hours, label.new-minutes, #newHours, #newMinutes, span{
   -moz-box-shadow: 0 1px 0 0 #8B8B8B;
   box-shadow: 0 1px 0 0 #8B8B8B;
 }
+
+.new-clock-submit {
+  margin-top: 30px;
+}
+
+a {
+  font-weight: 100;
+}
+
+input[type='submit'] {
+  transform: scale(.7);
+}
