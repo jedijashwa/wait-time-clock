@@ -28,44 +28,6 @@ connection.connect(function (err) {
         CONSTRAINT `clocks_fk0` FOREIGN KEY (`location_id`) REFERENCES `locations`(`id`)\
       );\
     ");
-    connection.query("INSERT IGNORE INTO locations (name) VALUES ('riesenable.io')", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
-    connection.query("INSERT IGNORE INTO locations (name) VALUES ('Apple R031')", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
-    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Wait Clock Demo', \
-        (SELECT id FROM locations WHERE name='riesenable.io')\
-      )", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
-    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Wait Clock Demo 2', \
-        (SELECT id FROM locations WHERE name='riesenable.io')\
-      )", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
-    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('iPhones', \
-        (SELECT id FROM locations WHERE id=2)\
-      )", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
-    connection.query("INSERT IGNORE INTO clocks (name, location_id) VALUES ('Same Day Repairs', \
-        (SELECT id FROM locations WHERE id=2)\
-      )", function(err, results, fields) {
-      if(err) {
-        console.error(err);
-      }
-    });
   }
 });
 
