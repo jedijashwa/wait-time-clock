@@ -129,3 +129,36 @@ label.new-hours, label.new-minutes, #newHours, #newMinutes, span{
     max-height: 0;
     opacity:1;
 }
+
+.new-location .collection {
+  border-width: 0px;
+  margin-bottom: 0px;
+}
+
+.new-location .card-content {
+  padding-bottom: 5px !important;
+}
+
+.new-location .card-title {
+  margin-bottom: 15px;
+}
+
+#new_clock_name:focus + label, #new_location_name:focus + label {
+  color: #006AFF;
+}
+#new_clock_name:focus, #new_location_name:focus, #new_clock_name:focus:valid, #new_location_name:focus:valid {
+  border-color: #006AFF;
+  -webkit-box-shadow: 0 1px 0 0 #006AFF;
+  -moz-box-shadow: 0 1px 0 0 #006AFF;
+  box-shadow: 0 1px 0 0 #006AFF;
+}
+
+#new_clock_name:valid + label, #new_location_name:valid + label {
+  
+}
+#new_clock_name:valid, #new_location_name:valid {
+  border-color: #8B8B8B;
+  -webkit-box-shadow: 0 1px 0 0 #8B8B8B;
+  -moz-box-shadow: 0 1px 0 0 #8B8B8B;
+  box-shadow: 0 1px 0 0 #8B8B8B;
+}

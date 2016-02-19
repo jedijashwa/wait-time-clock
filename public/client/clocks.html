@@ -7,10 +7,17 @@
           New Organization
           </div>
           <div class="collection animate-if" ng-if='expanded === 0'>
-            <div class="input-field col s6">
-              <input id="new_location_name" type="text" class="validate" ng-model="new_location_name" required="">
-              <label for="new_location_name">Organization name</label>
-            </div>
+            <form class="col s12 new-clock">
+              <div class="input-field col s6">
+                <input id="new_location_name" type="text" class="validate" ng-model="new_location_name" required="">
+                <label for="new_location_name">Organization name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="new_clock_name" type="text" class="validate" ng-model="new_clock_name" required="">
+                <label for="new_clock_name">Clock name</label>
+              </div>
+              <a class="waves-effect waves-light btn right blue darken-3" ng-click='createOrg();'>Create</a>
+            </form>
           </div>
         </div>
       </div>

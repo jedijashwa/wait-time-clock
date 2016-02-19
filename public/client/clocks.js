@@ -26,7 +26,19 @@ app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $htt
         $scope.expanded = location;
       }
     }
-  }
+  };
+  
+  $scope.createOrg = function () {
+    // send API request for creating location
+    // promise with returned location createClock
+    $scope.createClock(location.id);
+  };
+  
+  $scope.createClock = function (locationID) {
+    // sned API request for creating clock
+    
+    getLocations();
+  };
   
   getLocations();
   
