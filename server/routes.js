@@ -56,6 +56,14 @@ module.exports = function(app, express){
     });
   });
   
+  app.post('/api/locations/', function(req, res) {
+    db.createLocation(req.body.location, function (locationID) {
+      db.createClock(req.body.clock, locationID, function (clockID) {
+        res.send(JSON.stringify(clockID));
+      });
+    });
+  });
+  
   app.get('/api/clocks', function(req, res) {
     db.getClocks(req.param('location_id'), function(results) {
       res.send(results);

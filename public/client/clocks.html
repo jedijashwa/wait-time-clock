@@ -4,19 +4,19 @@
       <div class='card new-location'>
         <div class='card-content'>
           <div class='card-title' ng-click='expand(0);'>
-          New Organization
+          <em>New Organization</em>
           </div>
           <div class="collection animate-if" ng-if='expanded === 0'>
-            <form class="col s12 new-clock">
+            <form class="col s12 new-clock" ng-submit="createOrg(newLocation, newClock);">
               <div class="input-field col s6">
-                <input id="new_location_name" type="text" class="validate" ng-model="new_location_name" required="">
+                <input id="new_location_name" type="text" class="validate" ng-model="newLocation" required="">
                 <label for="new_location_name">Organization name</label>
               </div>
               <div class="input-field col s6">
-                <input id="new_clock_name" type="text" class="validate" ng-model="new_clock_name" required="">
+                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="">
                 <label for="new_clock_name">Clock name</label>
               </div>
-              <a class="waves-effect waves-light btn right blue darken-3" ng-click='createOrg();'>Create</a>
+              <input type='submit' class="waves-effect waves-light btn right blue darken-3" value="Create" id="submit">
             </form>
           </div>
         </div>
@@ -30,6 +30,15 @@
           </div>
           <div class="collection animate-if" ng-if='expanded === location.id'>
             <a href="#/clock/{{ clock.id }}" class="collection-item blue-text darken-3" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
+            <form class="col s12 new-clock" ng-submit="createOrg(location.name, newClock);">
+              <div class="input-field col s6">
+                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="">
+                <label for="new_clock_name">New clock</label>
+              </div>
+              <div class="col s2">
+                <input type='submit' class="waves-effect waves-light btn right blue darken-3 new-clock-submit" value="Create" id="submit">
+              </div>
+            </form>
           </div>
         </div>
       </div>

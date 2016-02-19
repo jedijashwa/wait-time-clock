@@ -106,4 +106,32 @@ module.exports.getClock = function (clock, cb) {
       cb(results);
     }
   );
-}
+};
+
+module.exports.createLocation = function (location, cb) {
+  connection.query("SELECT id FROM locations WHERE name=?", [location],
+    function(err, results, fields) {
+      if(!results.length) {
+        connection.query("INSERT INTO locations (name) VALUES (?)", [location],
+          function(err, result) {
+            cb(result.insertId);
+          });
+      } else {
+        cb(results[0].id);
+      }
+  });
+};
+
+module.exports.createClock = function(clock, locationID, cb) {
+  connection.query("SELECT id FROM clocks WHERE location_id=? and name=?", [locationID, clock],
+    function(err, results, fields) {
+      if(!results.length) {
+        connection.query("INSERT INTO clocks (name, location_id) VALUES (?, ?)",
+          [clock, locationID], function (err, result, fields) {
+            cb(result.insertId);
+          });
+      } else {
+        cb(results[0].id);
+      }
+  });
+};

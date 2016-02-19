@@ -1,4 +1,4 @@
-app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $http, auth, $element) {
+app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $http, auth, $element, $location) {
   $rootScope.location = 'Please select a clock below.';
   $rootScope.name = 'Wait Clock';
   
@@ -28,10 +28,12 @@ app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $htt
     }
   };
   
-  $scope.createOrg = function () {
+  $scope.createOrg = function (newLocation, newClock) {
     // send API request for creating location
-    // promise with returned location createClock
-    $scope.createClock(location.id);
+    $http.post('/api/locations/', {location: newLocation, clock: newClock})
+    .then(function(res) {
+      $location.path('/clock/' + res.data);
+    });
   };
   
   $scope.createClock = function (locationID) {
