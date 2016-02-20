@@ -1,7 +1,7 @@
 <div ng-controller='clocks-controller'>
   <div class='container'>
     <div class='row'>
-      <div class='card new-location'>
+      <div class='card new-location' ng-click="newClockClick();">
         <div class='card-content'>
           <div class='card-title' ng-click='expand(0);'>
           <em>New Organization</em>
@@ -9,14 +9,14 @@
           <div class="collection animate-if" ng-if='expanded === 0'>
             <form class="col s12 new-clock" ng-submit="createOrg(newLocation, newClock);">
               <div class="input-field col s6">
-                <input id="new_location_name" type="text" class="validate" ng-model="newLocation" required="">
+                <input id="new_location_name" type="text" class="validate" ng-model="newLocation" required="" ng-disabled="!isAuthenticated">
                 <label for="new_location_name">Organization name</label>
               </div>
               <div class="input-field col s6">
-                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="">
+                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="" ng-disabled="!isAuthenticated">
                 <label for="new_clock_name">Clock name</label>
               </div>
-              <input type='submit' class="waves-effect waves-light btn right blue darken-3" value="Create" id="submit">
+              <input type='submit' class="waves-effect waves-light btn right blue darken-3" value="Create" id="submit" ng-disabled="!isAuthenticated">
             </form>
           </div>
         </div>
@@ -31,12 +31,12 @@
           <div class="collection animate-if" ng-if='expanded === location.id'>
             <a href="#/clock/{{ clock.id }}" class="collection-item blue-text darken-3" ng-repeat='clock in location.clocks'>{{ clock.name }}</a>
             <form class="col s12 new-clock" ng-submit="createOrg(location.name, newClock);">
-              <div class="input-field col s6">
-                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="">
+              <div class="input-field col s6" ng-click="newClockClick();">
+                <input id="new_clock_name" type="text" class="validate" ng-model="newClock" required="" ng-disabled="!isAuthenticated">
                 <label for="new_clock_name">New clock</label>
               </div>
               <div class="col s2">
-                <input type='submit' class="waves-effect waves-light btn right blue darken-3 new-clock-submit" value="Create" id="submit">
+                <input type='submit' class="waves-effect waves-light btn right blue darken-3 new-clock-submit" value="Create" id="submit" ng-disabled="!isAuthenticated">
               </div>
             </form>
           </div>

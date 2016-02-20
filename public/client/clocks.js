@@ -42,6 +42,12 @@ app.controller("clocks-controller", function ($scope, $rootScope, $timeout, $htt
     getLocations();
   };
   
+  $scope.newClockClick = function () {
+    if (!$scope.isAuthenticated) {
+      $scope.login();
+    }
+  };
+  
   getLocations();
   
   $(document).ready(function(){
