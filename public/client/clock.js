@@ -2,6 +2,10 @@ app.controller("clock-controller", function ($scope, $rootScope, $timeout, $http
   var clockID = $location.path().substr(7);
   $scope.currentWait = {};
   
+  $timeout(function () {
+    $rootScope.showClock = true;
+  }, 100);
+  
   $http.get('/api/clock/?clock_id=' + clockID).then(function (res) {
     $rootScope.location = res.data[0].location;
     $rootScope.name = res.data[0].name;

@@ -5,6 +5,10 @@
     <script src="../lib/angular/angular.min.js"></script>
     <script src="../lib/angular-route/angular-route.min.js"></script>
     <script src="../lib/angular-animate/angular-animate.min.js"></script>
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" type="text.css" href"../lib/animate.css/animate.min.css">
+    
     <!-- JQuery -->
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     
@@ -40,12 +44,12 @@
       </div>
       <a href="#" data-activates="mobile-demo" class="button-collapse mdi-navigation-menu"></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/#/">Clocks</a></li>
+        <li><a ng-click="loadClocks()">Clocks</a></li>
         <li><a ng-click="login()" ng-if="!isAuthenticated">Sign In</a></li>
         <li><a ng-click="logout()" ng-if="isAuthenticated">Sign Out</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="/#/">Clocks</a></li>
+        <li><a ng-click="loadClocks()">Clocks</a></li>
         <li><a ng-click="login()" ng-if="!isAuthenticated">Sign In</a></li>
         <li><a ng-click="logout()" ng-if="isAuthenticated">Sign Out</a></li>
       </ul>

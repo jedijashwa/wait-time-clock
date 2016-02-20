@@ -58,7 +58,13 @@ var app = angular.module('app',[
 });
 // end of Auth0 set up
 
-app.controller("info-controller", function ($scope) {
+app.controller("info-controller", function ($scope, $rootScope, $timeout, $location) {
+  $scope.loadClocks = function () {
+    $rootScope.showClock = false;
+    $timeout(function () {
+      $location.path('/');
+    }, 500);
+  };
 });
 
 // activates sidebar on mobile

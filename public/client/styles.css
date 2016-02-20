@@ -174,3 +174,16 @@ a {
 input[type='submit'] {
   transform: scale(.7);
 }
+
+.clock.ng-enter {  
+    -webkit-animation: slideInRight .5s;
+    -moz-animation: slideInRight .5s;
+    -ms-animation: slideInRight .5s;
+    animation: slideInRight .5s;
+}
+.clock.ng-leave {  
+    -webkit-animation: slideOutLeft .5s;
+    -moz-animation: slideOutLeft .5s;
+    -ms-animation: slideOutLeft .5s;
+    animation: slideOutLeft .5s;
+}

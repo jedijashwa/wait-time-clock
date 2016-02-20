@@ -1,7 +1,7 @@
 <div ng-controller="clock-controller">
   <div class="container">
     <div class="valign-wrapper">
-      <div class="card clock">
+      <div class="card clock" ng-if="showClock">
         <div class="row">
           <div class="col time">{{ time | date : "hh" }}:{{ time | date : "mm" }}</div>
           <div class="col">

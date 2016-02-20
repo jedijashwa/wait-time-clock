@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class='row' ng-repeat='location in locations'>
-      <div class='card' ng-if="location.clocks.length">
+      <div class='card location-card' ng-if="location.clocks.length">
         <div class='card-content'>
           <div class='card-title' ng-click='expand(location.id);'>
             {{ location.name }}
