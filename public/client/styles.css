@@ -23,7 +23,7 @@ main {
 }
 
 /*Auth0 style*/
-.a0-primary {
+/*.a0-primary {
   background-color: black !important;
 }
 
@@ -33,7 +33,7 @@ main {
 
 .a0-panel, .a0-mode-container, .a0-body-content{
   border-radius: 3px !important;
-}
+}*/
 
 .brand-logo, .clock-location, .footer-copyright a {
   font-weight: 200;
